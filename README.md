@@ -66,7 +66,7 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 
 ## 👥 Contributors
 
-- **[Heshan Chandeepa](https://github.com/HChandeepa)** (Group Leader)
+- [Heshan Chandeepa](https://github.com/HChandeepa) (Group Leader)
 - [Janith Rankelum](https://github.com/JanithRankelum)
 - [Akila Vidushan](https://github.com/Akilavidu)
 - [Chanuth Manage](https://github.com/chanuth2k3)
