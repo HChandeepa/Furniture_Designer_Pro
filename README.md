@@ -1,39 +1,48 @@
 # 🛋️ Furniture Designer Pro
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/furniture-designer-pro.svg)](https://github.com/yourusername/furniture-designer-pro/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/furniture-designer-pro.svg)](https://github.com/yourusername/furniture-designer-pro/issues)
+![Furniture Designer Pro Banner](https://via.placeholder.com/1200x400?text=Furniture+Designer+Pro+Banner) <!-- Replace with actual banner image -->
 
-A modern web platform for furniture shopping with immersive 3D room visualization. Customers can browse products while designers can upload new furniture and preview them in virtual spaces.
+A revolutionary 3D furniture shopping experience that allows customers to visualize products in their space before purchasing, and gives designers tools to showcase their creations.
 
-![Furniture Designer Pro Screenshot](assets/screenshot.png) <!-- Add a screenshot later -->
+## 🌟 Features
 
-## ✨ Key Features
+- **3D Room Visualization** - See furniture in your space before buying
+- **Designer Dashboard** - Upload and manage furniture designs
+- **E-commerce Integration** - Seamless shopping experience
+- **Real-time Preview** - Interactive 3D rendering with Three.js
+- **Responsive Design** - Works on desktop and mobile devices
 
-- **3D Room Designer** - Visualize furniture in your space before buying
-- **Furniture Marketplace** - Browse and purchase quality furniture
-- **Designer Dashboard** - Upload and manage furniture products
-- **Real-time Preview** - See how items look in different room setups
-- **Measurement Tools** - Ensure perfect fit with dimension checking
-
-## 🚀 Technologies Used
+## 🧱 Core Technology Stack
 
 ### Frontend
-- HTML5, CSS3, JavaScript
-- [Three.js](https://threejs.org/) (3D Visualization)
-- [jQuery](https://jquery.com/) (DOM Manipulation)
-- [Font Awesome](https://fontawesome.com/) (Icons)
-- [Google Fonts](https://fonts.google.com/) (Typography)
+- **JavaScript (ES6+)** - Primary application logic
+- **Three.js** - 3D graphics and rendering
+- **WebGL** - GPU-accelerated 3D graphics
+- **HTML5 Canvas** - 2D/3D graphics rendering
+- **Firebase** - Authentication and real-time data
 
-### Backend
-- Node.js (Runtime)
-- Express.js (Server Framework)
-- MongoDB (Database)
-- Firebase (Authentication)
+### 🛠️ Development Tools
+- **Node.js & npm** - Dependency management
+- **Grunt** - Build automation
+- **Python HTTP Server** - Local development
 
-## 🛠️ Installation
+## 📸 Screenshots
 
-1. Clone the repository:
+| Login Screen | Signup Screen | Product Catalog |
+|--------------|---------------|------------------|
+| ![Login]([https://via.placeholder.com/300x200?text=Login+Screen](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/login.png)) | ![Signup](https://via.placeholder.com/300x200?text=Signup+Screen) | ![Products](https://via.placeholder.com/300x200?text=Product+Catalog) |
+
+| Designer View | 3D Preview |
+|---------------|------------|---------------|
+| ![Designer](https://via.placeholder.com/300x200?text=Designer+View) | ![3D View](https://via.placeholder.com/300x200?text=3D+Preview) |
+
+*Replace placeholder URLs with actual screenshot images*
+
+## 🚀 Installation & Setup
+
+### Development Environment
+
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/furniture-designer-pro.git
-   cd furniture-designer-pro
+   git clone https://github.com/HChandeepa/Furniture_Designer_Pro.git
+   cd Furniture_Designer_Pro
