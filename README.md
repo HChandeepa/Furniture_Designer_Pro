@@ -34,9 +34,9 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 
 | Designer View | 3D Preview |
 |---------------|------------|---------------|
-| ![Designer](https://via.placeholder.com/300x200?text=Designer+View) | ![3D View](https://via.placeholder.com/300x200?text=3D+Preview) |
+| ![Designer View](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/designer%20view.png) | ![3D Preview](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/3D%20view.png) |
 
-*Replace placeholder URLs with actual screenshot images*
+
 
 ## 🚀 Installation & Setup
 
@@ -45,4 +45,4 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/HChandeepa/Furniture_Designer_Pro.git
-   cd Furniture_Designer_Pro
+   cd furni 3d
