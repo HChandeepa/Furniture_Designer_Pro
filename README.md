@@ -66,52 +66,11 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 
 ## 👥 Contributors
 
-We appreciate all our amazing contributors who made this project possible:
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/HChandeepa">
-        <img src="https://avatars.githubusercontent.com/u/YOUR_USER_ID?s=100" width="100px" alt="Heshan Chandeepa"/><br />
-        <sub><b>Heshan Chandeepa</b></sub>
-      </a><br />
-      <span>Project Lead</span>
-    </td>
-    <td align="center">
-      <a href="https://github.com/JanithRankelum">
-        <sub><b>Janith Rankelum</b></sub>
-      </a><br />
-
-    </td>
-    <td align="center">
-      <a href="https://github.com/Akilavidu">
-        <img src="https://avatars.githubusercontent.com/u/Akilavidu?s=100" width="100px" alt="Akila Vidushan"/><br />
-        <sub><b>Akila Vidushan</b></sub>
-      </a><br />
-      <span>Frontend Dev</span>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/chanuth2k3">
-        <img src="https://avatars.githubusercontent.com/u/chanuth2k3?s=100" width="100px" alt="Chanuth Manage"/><br />
-        <sub><b>Chanuth Manage</b></sub>
-      </a><br />
-      <span>UX Designer</span>
-    </td>
-    <td align="center">
-      <a href="https://github.com/1nipun">
-        <img src="https://avatars.githubusercontent.com/u/1nipun?s=100" width="100px" alt="Nipun Manupriya"/><br />
-        <sub><b>Nipun Manupriya</b></sub>
-      </a><br />
-      <span>Backend Dev</span>
-    </td>
-    <td align="center">
-      <a href="https://github.com/malindu101">
-        <img src="https://avatars.githubusercontent.com/u/malindu101?s=100" width="100px" alt="Malindu Wicramasinghe"/><br />
-        <sub><b>Malindu Wicramasinghe</b></sub>
-      </a><br />
-      <span>QA Engineer</span>
-    </td>
+- **[Heshan Chandeepa](https://github.com/HChandeepa)** (Group Leader)
+- [Janith Rankelum](https://github.com/JanithRankelum)
+- [Akila Vidushan](https://github.com/Akilavidu)
+- [Chanuth Manage](https://github.com/chanuth2k3)
+- [Nipun Manupriya](https://github.com/1nipun)
+- [Malindu Wicramasinghe](https://github.com/malindu101)
   </tr>
 </table>
