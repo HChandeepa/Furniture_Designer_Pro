@@ -1,6 +1,6 @@
 # 🛋️ Furniture Designer Pro
 
-![Furniture Designer Pro Banner](https://via.placeholder.com/1200x400?text=Furniture+Designer+Pro+Banner) <!-- Replace with actual banner image -->
+![Furniture Designer Pro Banner](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/logo.png) <!-- Replace with actual banner image -->
 
 A revolutionary 3D furniture shopping experience that allows customers to visualize products in their space before purchasing, and gives designers tools to showcase their creations.
 
