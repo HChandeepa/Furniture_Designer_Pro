@@ -46,3 +46,20 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
    ```bash
    git clone https://github.com/HChandeepa/Furniture_Designer_Pro.git
    cd furni 3d
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+
+3. **Build the project**:
+   ```bash
+   grunt
+
+4. **Start local server**:
+   ```bash
+   cd furni 3d
+   python -m http.server
+
+5. **Start local server**:
+   ```bash
+   http://localhost:8000
