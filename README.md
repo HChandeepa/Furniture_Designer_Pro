@@ -79,10 +79,9 @@ We appreciate all our amazing contributors who made this project possible:
     </td>
     <td align="center">
       <a href="https://github.com/JanithRankelum">
-        <img src="https://avatars.githubusercontent.com/u/JanithRankelum?s=100" width="100px" alt="Janith Rankelum"/><br />
         <sub><b>Janith Rankelum</b></sub>
       </a><br />
-      <span>3D Rendering</span>
+
     </td>
     <td align="center">
       <a href="https://github.com/Akilavidu">
