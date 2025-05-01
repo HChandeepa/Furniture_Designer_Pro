@@ -30,7 +30,7 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 
 | Login Screen | Signup Screen | Product Catalog |
 |--------------|---------------|------------------|
-| ![Login Screen](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/login.png) | ![Signup](https://via.placeholder.com/300x200?text=Signup+Screen) | ![Products](https://via.placeholder.com/300x200?text=Product+Catalog) |
+| ![Login Screen](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/login.png) | ![Signup Screen](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/signup.png) | ![Product Catalog](https://github.com/HChandeepa/Furniture_Designer_Pro/blob/main/furni%203d/assets/Screenshots/product%20catelogue.png) |
 
 | Designer View | 3D Preview |
 |---------------|------------|---------------|
