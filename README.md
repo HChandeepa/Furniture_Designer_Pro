@@ -15,6 +15,7 @@ A revolutionary 3D furniture shopping experience that allows customers to visual
 ## 🧱 Core Technology Stack
 
 ### Frontend
+- **HTML, CSS, JavaScript** - Login, Signup, Catalogue Development
 - **JavaScript (ES6+)** - Primary application logic
 - **Three.js** - 3D graphics and rendering
 - **WebGL** - GPU-accelerated 3D graphics
