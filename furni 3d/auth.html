@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Designer Pro | Authentication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/auth.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Design Preview Panel -->
+        <div class="design-preview">
+            <div class="preview-overlay">
+                <img src="assets/logo-white.png" alt="Furniture Designer Pro" class="logo">
+                <h1>Transform Your Space</h1>
+                <p>Visualize furniture in your room before you buy</p>
+                <div class="preview-features">
+                    <div class="feature">
+                        <i class="fas fa-ruler-combined"></i>
+                        <span>Precise Measurements</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-palette"></i>
+                        <span>Color Matching</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cube"></i>
+                        <span>3D Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auth Forms Panel -->
+        <div class="auth-forms-panel">
+            <div class="forms-container">
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to your designer account</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loginEmail">Email Address</label>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="designer@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="••••••••" required>
+                            <!-- <i class="fas fa-eye toggle-password"></i> -->
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary">
+                        <span>Sign In</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <!-- <button type="button" class="auth-btn google">
+                        <i class="fab fa-google"></i>
+                        <span>Continue with Google</span>
+                    </button> -->
+                    
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" id="showRegister">Sign up</a>
+                    </div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Start designing your space today</p>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="registerName">Full Name</label>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="registerName" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="registerEmail">Email Address</label>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" placeholder="designer@example.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="registerPassword">Password</label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" placeholder="••••••••" required>
+                            <!-- <i class="fas fa-eye toggle-password"></i> -->
+                        </div>
+                        <!-- <div class="password-strength">
+                            <div class="strength-meter">
+                                <span class="strength-bar"></span>
+                                <span class="strength-bar"></span>
+                                <span class="strength-bar"></span>
+                            </div>
+                            <span class="strength-text">Password strength: <span>Weak</span></span>
+                        </div> -->
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="registerConfirmPassword">Confirm Password</label>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerConfirmPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="legal/terms.html">Terms of Service</a> and <a href="legal/privacy.html">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary">
+                        <span>Create Account</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" id="showLogin">Sign in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="authToast" class="toast-notification">
+        <div class="toast-content">
+            <i class="fas" id="toastIcon"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Auth JS -->
+    <script>
+        // Simple login form handler that redirects to furniture.html
+        $(document).ready(function() {
+            // Handle login form submission
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real app, you would validate credentials here
+                // For this demo, we'll just redirect
+                window.location.href = 'furniture.html';
+            });
+            
+            // Handle register form submission
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real app, you would register the user here
+                // For this demo, we'll just show the login form
+                $('#registerForm').removeClass('active');
+                $('#loginForm').addClass('active');
+                
+                // Show success message
+                showToast('Account created successfully! Please sign in.', 'success');
+            });
+            
+            // Toggle between login and register forms
+            $('#showRegister').on('click', function(e) {
+                e.preventDefault();
+                $('#loginForm').removeClass('active');
+                $('#registerForm').addClass('active');
+            });
+            
+            $('#showLogin').on('click', function(e) {
+                e.preventDefault();
+                $('#registerForm').removeClass('active');
+                $('#loginForm').addClass('active');
+            });
+            
+            // Function to show toast notifications
+            function showToast(message, type) {
+                const toast = $('#authToast');
+                const toastIcon = $('#toastIcon');
+                const toastMessage = $('#toastMessage');
+                
+                // Set icon based on type
+                if (type === 'success') {
+                    toastIcon.removeClass('fa-times').addClass('fa-check');
+                    toast.removeClass('error').addClass('success');
+                } else {
+                    toastIcon.removeClass('fa-check').addClass('fa-times');
+                    toast.removeClass('success').addClass('error');
+                }
+                
+                // Set message and show
+                toastMessage.text(message);
+                toast.addClass('show');
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    toast.removeClass('show');
+                }, 3000);
+            }
+        });
+    </script>
+    
+</body>
+</html>
