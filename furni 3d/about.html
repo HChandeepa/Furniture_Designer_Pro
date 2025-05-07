@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Furniture Designer Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary-color: #00ceff;
+            --accent-color: #fd79a8;
+            --dark-text: #2d3436;
+            --light-text: #636e72;
+            --bg-color: #f5f6fa;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Sections */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .about-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+
+        /* Team Section */
+        .team-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .member-position {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .member-bio {
+            color: var(--light-text);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background-color: var(--card-bg);
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--light-text);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-statement:before,
+        .mission-statement:after {
+            content: '"';
+            font-size: 30px;
+            color: var(--primary-color);
+            line-height: 0;
+            vertical-align: middle;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #b2b2b2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: #b2b2b2;
+            margin-bottom: 15px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: white;
+            font-size: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            color: #b2b2b2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .about-section.reverse {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-content {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .mission-section {
+                padding: 40px 20px;
+            }
+            
+            .mission-statement {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with navigation buttons -->
+        <div class="header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-couch"></i>
+                <span>Furniture Designer Pro</span>
+            </a>
+            <div class="nav-buttons">
+                <a href="furniture.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <!-- <a href="products.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-bag"></i> Products
+                </a> -->
+                <button id="logoutBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Our Story</h1>
+
+        <!-- About Section 1 -->
+        <div class="about-section">
+            <div class="about-image">
+                <img src="https://www.ulcdn.net/media/furniture-stores/coimbatore/avinashiroad/Avinashi-Road-TN-store-mobile.jpg?1683050227" alt="Our Workshop">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Who We Are</h2>
+                <p>Founded in 2010, Furniture Designer Pro began as a small workshop with a big vision: to revolutionize the way people design and experience furniture. What started as a passion project between three design school graduates has grown into a leading furniture design platform serving customers worldwide.</p>
+                <p>Our team of expert designers, craftsmen, and technologists work together to create furniture that blends timeless craftsmanship with cutting-edge design technology. We believe that everyone deserves beautiful, functional spaces that reflect their unique personality and needs.</p>
+                <p>Today, we're proud to have helped over 50,000 customers create their dream spaces, with showrooms in 12 cities across 3 continents.</p>
+            </div>
+        </div>
+
+        <!-- About Section 2 -->
+        <div class="about-section reverse">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Design Process">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Our Design Philosophy</h2>
+                <h3 class="section-subtitle">Where Craft Meets Innovation</h3>
+                <p>At Furniture Designer Pro, we bridge the gap between traditional craftsmanship and modern technology. Each piece in our collection begins with hand-drawn sketches by our master designers, then comes to life through a combination of artisanal techniques and precision engineering.</p>
+                <p>We obsess over every detail - from the sustainably sourced materials to the ergonomics of each design. Our proprietary design platform allows customers to customize every aspect of their furniture while ensuring structural integrity and design coherence.</p>
+                <p>Whether you're looking for a statement piece or a complete room solution, our designs are created to stand the test of time both in style and durability.</p>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <h2 class="section-title">Meet Our Founders</h2>
+            <p>The creative minds behind Furniture Designer Pro</p>
+            
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <img src="https://t4.ftcdn.net/jpg/06/72/52/83/360_F_672528303_LNWcUM1zY4SlWPinvpsXLkCTtMxxEE2d.jpg" alt="Sarah Johnson" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Johnson</h3>
+                        <p class="member-position">Chief Design Officer</p>
+                        <p class="member-bio">Graduate of Rhode Island School of Design with 15 years of experience in furniture design. Sarah leads our creative team and ensures every piece meets our exacting standards.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <img src="https://images.rawpixel.com/image_png_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8zNV8zZF9yZW5kZXJfY2hhcmFjdGVyX29mX2FtZXJpY2FuX2dpcmxfdHJ5X3RvX19iYzNjYzNjNi02ZGIwLTQ0NDUtOWY4Mi04NDY1NGJhN2NmOTEucG5n.png" alt="Michael Chen" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Michael Chen</h3>
+                        <p class="member-position">CEO & Head of Technology</p>
+                        <p class="member-bio">Former MIT researcher who developed our proprietary design platform. Michael's vision drives our technological innovation while maintaining our artisanal roots.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <img src="https://t4.ftcdn.net/jpg/09/17/26/25/360_F_917262500_vkLHa3NChVnaXgoKThxDyYsF0Pa45dwy.jpg" alt="David Rodriguez" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">David Rodriguez</h3>
+                        <p class="member-position">Master Craftsman</p>
+                        <p class="member-bio">Fourth-generation furniture maker who oversees our production. David ensures every piece meets traditional craftsmanship standards while incorporating modern techniques.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stats-container">
+                <h2 class="section-title" style="color: white;">By The Numbers</h2>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 0;">Our impact in the design world</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Years in Business</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Design Awards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Showrooms Worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="mission-section">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="mission-statement">To empower everyone to create beautiful, functional spaces through innovative design technology and timeless craftsmanship, making exceptional furniture accessible to all.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="furniture.html">Home</a></li>
+                    <!-- <li><a href="products.html">Products</a></li> -->
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="track.html">Order Tracking</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Furniture Designer Pro,
+                    Kottawa Road,
+                    Homagama, Sri Lanka</p>
+                <p>Phone:  (+94) 0112-456-7890</p>
+                <p>Email: contact@furnituredesignerpro.com.</p>
+                <div class="footer-social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Furniture Designer Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            // Clear session or any user data
+            sessionStorage.removeItem('designer_user');
+            
+            // Redirect to login page
+            window.location.href = 'auth.html';
+        });
+    </script>
+</body>
+</html>
