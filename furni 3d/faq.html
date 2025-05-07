@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | Furniture Designer Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary-color: #00ceff;
+            --accent-color: #fd79a8;
+            --dark-text: #2d3436;
+            --light-text: #636e72;
+            --bg-color: #f5f6fa;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--dark-text);
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Search FAQ */
+        .search-faq {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-faq input {
+            width: 100%;
+            padding: 15px 20px;
+            padding-left: 50px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-faq input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 15px rgba(67, 97, 238, 0.1);
+        }
+
+        .search-faq i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+        }
+
+        /* FAQ Categories */
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .contact-cta h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-cta p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #b2b2b2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-section p {
+            color: #b2b2b2;
+            margin-bottom: 15px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: white;
+            font-size: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #444;
+            color: #b2b2b2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .faq-question {
+                font-size: 16px;
+                padding: 15px;
+            }
+            
+            .contact-cta {
+                padding: 30px 20px;
+            }
+            
+            .contact-cta h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .faq-question {
+                font-size: 15px;
+            }
+            
+            .contact-cta h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with navigation buttons -->
+        <div class="header">
+            <a href="furniture.html" class="logo">
+                <i class="fas fa-couch"></i>
+                <span>Furniture Designer Pro</span>
+            </a>
+            <div class="nav-buttons">
+                <!-- <a href="index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a> -->
+                <a href="furniture.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-bag"></i> Products
+                </a>
+                <button id="logoutBtn" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Frequently Asked Questions</h1>
+
+        <!-- FAQ Search -->
+        <div class="search-faq">
+            <i class="fas fa-search"></i>
+            <input type="text" id="faqSearch" placeholder="Search our FAQs...">
+        </div>
+
+        <!-- FAQ Categories -->
+        <div class="faq-categories">
+            <button class="category-btn active" data-category="all">All Questions</button>
+            <button class="category-btn" data-category="ordering">Ordering</button>
+            <button class="category-btn" data-category="shipping">Shipping & Delivery</button>
+            <button class="category-btn" data-category="returns">Returns & Exchanges</button>
+            <button class="category-btn" data-category="designer">Designer Tool</button>
+            <button class="category-btn" data-category="products">Product Questions</button>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="faq-container">
+            <!-- Ordering Questions -->
+            <div class="faq-item" data-categories="ordering">
+                <div class="faq-question">
+                    <span>How do I place an order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ordering is simple! Browse our collection, select your items, and add them to your cart. When you're ready, proceed to checkout where you'll enter your shipping information and payment details. You'll receive an order confirmation email once your purchase is complete.</p>
+                    <p>For custom designs using our Designer Tool, you'll need to finalize your design before adding it to your cart.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-categories="ordering">
+                <div class="faq-question">
+                    <span>What payment methods do you accept?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and Apple Pay. All payments are processed securely through our encrypted payment gateway.</p>
+                </div>
+            </div>
+
+            <!-- Shipping Questions -->
+            <div class="faq-item" data-categories="shipping">
+                <div class="faq-question">
+                    <span>How long does shipping take?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Standard shipping typically takes 5-7 business days within the continental US. For custom or made-to-order items, please allow 2-3 weeks for production before shipping. You'll receive tracking information as soon as your order ships.</p>
+                    <p>Expedited shipping options are available at checkout for faster delivery.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-categories="shipping">
+                <div class="faq-question">
+                    <span>Do you offer international shipping?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We ship to over 50 countries worldwide. International shipping costs and delivery times vary by destination. Duties and taxes may apply depending on your country's import regulations.</p>
+                </div>
+            </div>
+
+            <!-- Returns Questions -->
+            <div class="faq-item" data-categories="returns">
+                <div class="faq-question">
+                    <span>What is your return policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 30-day return policy for most items. The item must be in its original condition, unused, and in the original packaging. Custom or made-to-order items are final sale and cannot be returned.</p>
+                    <p>To initiate a return, please contact our customer service team with your order number. You'll be responsible for return shipping costs unless the return is due to our error.</p>
+                </div>
+            </div>
+
+            <!-- Designer Tool Questions -->
+            <div class="faq-item" data-categories="designer">
+                <div class="faq-question">
+                    <span>How does the Designer Tool work?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our Designer Tool allows you to create custom furniture pieces tailored to your exact specifications. Simply select a base design, then customize dimensions, materials, colors, and finishes. The tool provides real-time pricing and 3D previews of your design.</p>
+                    <p>Our system ensures all custom designs meet our structural and quality standards. Once finalized, your custom piece will be handcrafted by our artisans.</p>
+                </div>
+            </div>
+
+            <!-- Product Questions -->
+            <div class="faq-item" data-categories="products">
+                <div class="faq-question">
+                    <span>What materials do you use in your furniture?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We use only premium, sustainable materials including:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Solid hardwoods (oak, walnut, maple)</li>
+                        <li>Eco-friendly engineered wood</li>
+                        <li>High-quality upholstery fabrics</li>
+                        <li>Low-VOC finishes and adhesives</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Each product page details the specific materials used in that item.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-categories="products">
+                <div class="faq-question">
+                    <span>How do I care for my furniture?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Care instructions vary by material:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Wood:</strong> Dust regularly with a soft cloth. Use a wood-specific cleaner occasionally.</li>
+                        <li><strong>Upholstery:</strong> Vacuum regularly and treat stains immediately with appropriate cleaner.</li>
+                        <li><strong>Metal:</strong> Wipe with a damp cloth and dry thoroughly.</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Detailed care instructions are included with every purchase.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-categories="shipping">
+                <div class="faq-question">
+                    <span>Do you offer assembly services?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We offer white-glove delivery and assembly service for an additional fee. Our delivery team will bring your furniture into your home, assemble it, place it in your desired location, and remove all packaging materials.</p>
+                    <p>Standard delivery includes curbside drop-off only. Assembly instructions are included with all items that require assembly.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-categories="ordering">
+                <div class="faq-question">
+                    <span>Can I modify or cancel my order after placing it?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We can often modify or cancel orders if contacted within 1 hour of purchase. For custom items, changes may not be possible once production has begun. Please contact our customer service team immediately if you need to modify or cancel your order.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="contact-cta">
+            <h2>Still have questions?</h2>
+            <p>Our customer service team is happy to help with any additional questions you may have.</p>
+            <a href="contact.html" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="track.html">Order Tracking</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Furniture Designer Pro,
+                    Kottawa Road,
+                    Homagama, Sri Lanka</p>
+                <p>Phone: (+94) 0112-456-7890</p>
+                <p>Email: contact@furnituredesignerpro.com</p>
+                <div class="footer-social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Furniture Designer Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // FAQ Category Filter
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                if (category === 'all') {
+                    faqItems.forEach(item => item.style.display = 'block');
+                } else {
+                    faqItems.forEach(item => {
+                        if (item.getAttribute('data-categories').includes(category)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // FAQ Search Functionality
+        document.getElementById('faqSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            // Clear session or any user data
+            sessionStorage.removeItem('designer_user');
+            
+            // Redirect to login page
+            window.location.href = 'auth.html';
+        });
+    </script>
+</body>
+</html>

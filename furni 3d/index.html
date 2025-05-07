@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Furniture Designer Pro</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/example.css" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Add Spectrum Color Picker CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.css" rel="stylesheet">
+
+    <script src="js/three.min.js"></script>
+    <script src="js/blueprint3d.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/example.js"></script>
+    <!-- Add Spectrum Color Picker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
+    
+    <style>
+      /* Add styles for the top middle buttons */
+      .top-middle-buttons {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        display: flex;
+        gap: 10px;
+      }
+      .top-middle-button {
+        background-color: #4361ee;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .top-middle-button:hover {
+        background-color: #3a0ca3;
+        color: white;
+      }
+      .logout-button {
+        background-color: #e63946;
+      }
+      .logout-button:hover {
+        background-color: #c1121f;
+      }
+      
+      /* Adjust main controls to account for new buttons */
+      #main-controls {
+        left: 10px;
+        top: 10px;
+      }
+      #camera-controls {
+        top: 10px;
+        right: 10px;
+      }
+      
+      /* Color picker styles */
+      .color-picker-container {
+        padding: 15px;
+      }
+      .color-picker-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row main-row">
+        <!-- Left Column -->
+        <div class="col-xs-3 sidebar">
+          <!-- Main Navigation -->
+          <ul class="nav nav-sidebar">
+            <li id="floorplan_tab"><a href="#">
+              <i class="fas fa-vector-square"></i> 2D View
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="design_tab"><a href="#">
+              <i class="fas fa-paint-roller"></i> 3D View
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="items_tab"><a href="#">
+              <i class="fas fa-couch"></i> Add Furniture
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+          </ul>
+          <hr />
+
+          <!-- Context Menu -->
+          <div id="context-menu">
+            <div style="margin: 0 20px">
+              <span id="context-menu-name" class="lead"></span>
+              <br /><br />
+              <button class="btn btn-block btn-danger" id="context-menu-delete">
+                <i class="fas fa-trash"></i> Delete Item
+              </button>
+            <br />
+            <div class="panel panel-default">
+              <div class="panel-heading">Adjust Size</div>
+              <div class="panel-body" style="color: #333333">
+
+                <div class="form form-horizontal" class="lead">
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                       Width
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-width">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Depth 
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-depth">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Height
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-height">
+                    </div>
+                  </div>
+                </div>
+                <small><span class="text-muted">Measurements in inches.</span></small>
+              </div>
+            </div>
+
+            <!-- <label><input type="checkbox" id="fixed" /> Lock in place</label> -->
+            <br /><br />
+            </div>
+          </div>
+
+          <!-- Floor textures -->
+          <div id="floorTexturesDiv" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Floor Materials</div>
+              <div class="panel-body" style="color: #333333">
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wall Color Picker -->
+          <div id="wallTextures" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Wall Color</div>
+              <div class="panel-body">
+                <div class="color-picker-container">
+                  <label class="color-picker-label">Select Wall Color:</label>
+                  <input type="text" id="wall-color-picker" value="#ffffff">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-xs-9 main">
+
+          <!-- Top Middle Buttons -->
+          <div class="top-middle-buttons">
+            <a href="furniture.html" class="top-middle-button">
+              <i class="fas fa-arrow-left"></i> Back to Products
+            </a>
+            <button class="top-middle-button logout-button" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+
+          <!-- 3D Viewer -->
+          <div id="viewer">
+
+            <div id="main-controls">
+              <a href="#" class="btn btn-default btn-sm" id="new">
+                <i class="fas fa-file"></i> New Room
+              </a>
+              <a href="#" class="btn btn-default btn-sm" id="saveFile">
+                <i class="fas fa-save"></i> Save Room
+              </a>
+              <a class="btn btn-sm btn-default btn-file">
+               <input type="file" class="hidden-input" id="loadFile">
+               <i class="fas fa-folder-open"></i> Upload Room
+              </a>
+            </div>
+
+            <div id="camera-controls">
+              <a href="#" class="btn btn-default bottom" id="zoom-out">
+                <i class="fas fa-search-minus"></i>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="reset-view">
+                <i class="fas fa-home"></i>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="zoom-in">
+                <i class="fas fa-search-plus"></i>
+              </a>
+              
+              <span>&nbsp;</span>
+
+              <a class="btn btn-default bottom" href="#" id="move-left" >
+                <i class="fas fa-arrow-left"></i>
+              </a>
+              <span class="btn-group-vertical">
+                <a class="btn btn-default" href="#" id="move-up">
+                  <i class="fas fa-arrow-up"></i>
+                </a>
+                <a class="btn btn-default" href="#" id="move-down">
+                  <i class="fas fa-arrow-down"></i>
+                </a>
+              </span>
+              <a class="btn btn-default bottom" href="#" id="move-right" >
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div id="loading-modal">
+              <h1><i class="fas fa-spinner fa-spin"></i> Loading...</h1>  
+            </div>
+          </div>
+
+          <!-- 2D Floorplanner -->
+          <div id="floorplanner">
+            <canvas id="floorplanner-canvas"></canvas>
+            <div id="floorplanner-controls">
+
+              <button id="move" class="btn btn-sm btn-default">
+                <i class="fas fa-arrows-alt"></i> Move Walls
+              </button>
+              <button id="draw" class="btn btn-sm btn-default">
+                <i class="fas fa-pencil-alt"></i> Draw Walls
+              </button>
+              <button id="delete" class="btn btn-sm btn-default">
+                <i class="fas fa-trash-alt"></i> Delete Walls
+              </button>
+              <span class="pull-right">
+                <button class="btn btn-primary btn-sm" id="update-floorplan">
+                  <i class="fas fa-check"></i> Done
+                </button>
+              </span>
+
+            </div>
+            <div id="draw-walls-hint">
+              Press the "Esc" key to stop drawing walls
+            </div>
+          </div>
+
+          <!-- Add Items -->
+          <div id="add-items">
+            <div class="row" id="items-wrapper">
+
+              <!-- Items added here by items.js -->
+            </div>
+          </div>
+      
+        </div>
+        <!-- End Right Column -->
+      </div>
+    </div>
+
+    <script>
+      // Logout functionality
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        // Clear session or any user data
+        sessionStorage.removeItem('designer_user');
+        
+        // Redirect to login page
+        window.location.href = 'auth.html';
+      });
+
+      // Initialize color picker
+      $(document).ready(function() {
+        $("#wall-color-picker").spectrum({
+          color: "#ffffff",
+          preferredFormat: "hex",
+          showInput: true,
+          showInitial: true,
+          allowEmpty: false,
+          showPalette: true,
+          palette: [
+            ["#ffffff", "#f8f9fa", "#e9ecef", "#dee2e6"],
+            ["#ced4da", "#adb5bd", "#6c757d", "#495057"],
+            ["#343a40", "#212529", "#f72585", "#7209b7"],
+            ["#3a0ca3", "#4361ee", "#4cc9f0", "#4895ef"],
+            ["#2b9348", "#55a630", "#80b918", "#aacc00"],
+            ["#bfd200", "#d4d700", "#dddf00", "#eeef20"],
+            ["#ffff3f", "#ffea00", "#ffd000", "#ffb700"],
+            ["#ff9500", "#ff7b00", "#ff5400", "#ff4800"],
+            ["#ff0000", "#dc2f02", "#9d0208", "#6a040f"]
+          ],
+          change: function(color) {
+            // When color changes, apply it to walls
+            const hexColor = color.toHexString();
+            updateWallColor(hexColor);
+          }
+        });
+      });
+
+      // Function to update wall color (implement in your 3D code)
+      function updateWallColor(color) {
+        console.log("Wall color changed to:", color);
+      }
+    </script>
+  </body>
+</html>
