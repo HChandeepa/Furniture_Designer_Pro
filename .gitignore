@@ -1,0 +1,14 @@
+*.sublime-workspace
+node_modules
+static
+*.DS_Store
+build
+*.sublime-project
+*.log
+
+.vscode
+bin
+doc
+dist
+furni3d/js/furni3d.js
+furni3d/js/three.min.js
