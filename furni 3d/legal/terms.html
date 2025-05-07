@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Furniture Designer Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="../css/auth.css" rel="stylesheet">
+    <link href="legal.css" rel="stylesheet">
+</head>
+<body>
+    <div class="legal-container">
+        <header class="legal-header">
+            <a href="../auth.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+            <img src="../assets/logo-white1.png", alt="Furniture Designer Pro" class="legal-logo">
+            <h1>Terms of Service</h1>
+            <p>Last Updated: <span id="current-date"></span></p>
+        </header>
+
+        <main class="legal-content">
+            <section>
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using the Furniture Designer Pro application ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access the Service.</p>
+            </section>
+
+            <section>
+                <h2>2. Description of Service</h2>
+                <p>Furniture Designer Pro is a desktop application that enables customers to visualize furniture in their rooms based on size, color schemes, and room shape. The Service includes:</p>
+                <ul>
+                    <li>2D and 3D room design tools</li>
+                    <li>Furniture catalog with sizing information</li>
+                    <li>Color scheme visualization</li>
+                    <li>Design saving and sharing features</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. User Accounts</h2>
+                <p>To access certain features, you must create an account. You agree to:</p>
+                <ul>
+                    <li>Provide accurate and complete information</li>
+                    <li>Maintain security of your account credentials</li>
+                    <li>Be responsible for all activities under your account</li>
+                    <li>Notify us immediately of any unauthorized use</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. Intellectual Property</h2>
+                <p>All content and materials available on the Service, including designs, graphics, text, and software, are the property of Furniture Designer Pro or its licensors and are protected by copyright and other intellectual property laws.</p>
+            </section>
+
+            <section>
+                <h2>5. User-Generated Content</h2>
+                <p>You retain ownership of any designs you create using the Service. By uploading or creating designs, you grant us a worldwide, non-exclusive license to use, display, and reproduce such content solely for providing and improving the Service.</p>
+            </section>
+
+            <section>
+                <h2>6. Prohibited Conduct</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use the Service for any illegal purpose</li>
+                    <li>Violate any laws in your jurisdiction</li>
+                    <li>Infringe on any intellectual property rights</li>
+                    <li>Upload viruses or malicious code</li>
+                    <li>Attempt to gain unauthorized access to our systems</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>7. Termination</h2>
+                <p>We may terminate or suspend your account immediately, without prior notice, for any violation of these Terms. Upon termination, your right to use the Service will cease immediately.</p>
+            </section>
+
+            <section>
+                <h2>8. Limitation of Liability</h2>
+                <p>Furniture Designer Pro shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your use of or inability to use the Service.</p>
+            </section>
+
+            <section>
+                <h2>9. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time. We will provide notice of significant changes through the Service. Your continued use constitutes acceptance of the modified Terms.</p>
+            </section>
+
+            <section>
+                <h2>10. Contact Information</h2>
+                <p>For questions about these Terms, please contact us at:</p>
+                <address>
+                    Furniture Designer Pro<br>
+ Kottawa Road,  <br>
+ Homagama, Sri Lanka<br
+                    <a href="mailto:legal@furnituredesignerpro.com">contact@furnituredesignerpro.com</a>
+                </address>
+            </section>
+        </main>
+
+        <footer class="legal-footer">
+            <p>&copy; <span id="current-year"></span> Furniture Designer Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date and year
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
